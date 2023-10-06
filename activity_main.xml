@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- 하위 레이아웃 (3:6:1 비율 중 3) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/main"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!-- 상위 레이아웃 내용을 여기에 추가합니다. -->
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/font"
+                android:text="Stylist"
+                android:textSize="38dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.038"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="스타일리스트는 코디를 손쉽게 도와드립니다."
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.598" />
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="118dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginEnd="119dp"
+                android:layout_marginBottom="16dp"
+                android:text="지금 바로 시작해 보세요!"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/goToColorMatch"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_camera"
+                    android:text="컬러 매치"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:layout_margin="7dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"
+                    />
+
+                <Button
+                    android:id="@+id/goToOutfit"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_camera"
+                    android:padding="10dp"
+                    android:text="코디 추천"
+                    android:textStyle="bold"
+                    android:layout_margin="7dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/goToCreateCloset"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_camera"
+                    android:text="옷장에 옷 등록하기"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:layout_margin="7dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/goToFindCloset"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_search"
+                    android:text="옷장에서 옷 찾기"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:layout_margin="7dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e6e7e8"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="가을 코디 추천 TOP10"
+                android:layout_gravity="center"
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp" />
+
+            <GridLayout
+                android:id="@+id/imgGridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:rowCount="5"
+                android:columnCount="2"
+                android:layout_gravity="center"
+                >
+
+                <!-- 첫 번째 이미지 -->
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall1"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"
+                    />
+
+                <!-- 두 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall2"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 세 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall3"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 네 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall4"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 다섯 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall5"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 여섯 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall6"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 일곱 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall7"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 여덟 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall8"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 아홉 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall9"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- 열 번째 이미지 -->
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:src="@drawable/fall10"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginBottom="20dp"/>
+
+            </GridLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#343541"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="30dp"
+            android:paddingBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stylist"
+                android:fontFamily="@font/font"
+                android:textColor="@color/white"
+                android:textSize="45dp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Copyright 2023. Stylist all right reserved."
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+        </LinearLayout>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
