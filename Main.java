@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
 
-    private Button goToOutfit;
+    private Button goToOutfit,goToColorMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,15 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         goToOutfit = findViewById(R.id.goToOutfit);
+        goToColorMatch = findViewById(R.id.goToColorMatch);
 
         goToOutfit.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), OutfitRecommend.class);
+            startActivity(intent);
+        });
+
+        goToColorMatch.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ColorMatch.class);
             startActivity(intent);
         });
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -16,23 +17,27 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.stylist.ml.Model;
+import com.example.stylist.ml.Colors;
+import android.graphics.Color;
 
 import org.tensorflow.lite.DataType;
 
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import org.tensorflow.lite.Interpreter;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 
-
-public class OutfitRecommend extends AppCompatActivity {
+public class ColorMatch extends AppCompatActivity {
 
     TextView result, resultText, resultText1,textView,warningMessage;
-    ImageView imageView, outfit1;
+    TextView color1, color2,color3, color4,color5;
+    ImageView imageView;
     Button picture;
     int imageSize = 224;
 
@@ -45,7 +50,6 @@ public class OutfitRecommend extends AppCompatActivity {
         result = findViewById(R.id.result);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
-//        outfit1 = findViewById(R.id.outfit1);
         Button galleryButton = findViewById(R.id.button2);
         resultText = findViewById(R.id.resultText);
         resultText1 = findViewById(R.id.resultText1);
@@ -74,10 +78,10 @@ public class OutfitRecommend extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
             }
         });
-        }
+    }
     public void classifyImage(Bitmap image){
         try {
-            Model model = Model.newInstance(getApplicationContext());
+            Colors color = Colors.newInstance(getApplicationContext());
 
             // 이미지를 원하는 크기로 조정
             image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
@@ -101,7 +105,7 @@ public class OutfitRecommend extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            Model.Outputs outputs = model.process(inputFeature0);
+            Colors.Outputs outputs = color.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
@@ -114,7 +118,7 @@ public class OutfitRecommend extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"반팔","셔츠","맨투맨 or 롱슬리브","니트","후드티","카디건","코트","패딩"};
+            String[] classes = {"GREEN","NAVY","RED","BURGUNDY","BEIGE","BROWN","BLACK","BLUE","SKYBLUE","YELLOW","ORANGE","KAHKI","CREAM","PURPLE","PINK","WHITE","GRAY"};
             String[] shorts={"short1","short2","short3","short4","short5","short6","short7","short8","short9","short10"};
             String[] shorts2={"short11","short12","short13","short14","short15","short16","short17","short18","short19","short20"};
             String[] shirt={"shirt1","shirt2","shirt3","shirt4","shirt5","shirt6","shirt7","shirt8","shirt9","shirt10"};
@@ -132,32 +136,35 @@ public class OutfitRecommend extends AppCompatActivity {
             String[] padding={"padding1","padding2","padding3","padding4","padding5","padding6","padding7","padding8","padding9","padding10"};
             String[] padding2={"padding1","padding12","padding13","padding14","padding15","padding16","padding17","padding18","padding19","padding20"};
 
-            int[] imageViewIds = {R.id.outfit1, R.id.outfit2, R.id.outfit3, R.id.outfit4, R.id.outfit5,
-                    R.id.outfit6, R.id.outfit7, R.id.outfit8, R.id.outfit9, R.id.outfit10 };
+            String[] greenColor = {"#00FF00", "#008000", "#7FFF00", "#008080", "#00FA9A"};
+
+            int[] imageViewIds = {R.id.color1, R.id.color2, R.id.color3, R.id.color4, R.id.color5 };
 
             int[] imageViewIds2 = { R.id.outfit11, R.id.outfit12,R.id.outfit13, R.id.outfit14,R.id.outfit15,
-                    R.id.outfit16,R.id.outfit17,R.id.outfit18, R.id.outfit19, R.id.outfit20
-            };
+                    R.id.outfit16,R.id.outfit17,R.id.outfit18, R.id.outfit19, R.id.outfit20 };
 
 
             //인식결과와 퍼센트 출력
             result.setText(classes[maxPos]+" ("+Math.round(maxConfidence*100)+"%)");
             textView.setText("");
             warningMessage.setText("※ 인식이 잘못되었을 경우, 재 인식을 해주세요.");
-            resultText.setText(classes[maxPos]+"와(과) 어울리는 아이템 10가지입니다.");
-            resultText1.setText(classes[maxPos]+"와(과) 어울리는 코디 10가지입니다.");
+            resultText.setText(classes[maxPos]+"와(과) 어울리는 색상 5가지입니다.");
+            resultText1.setText(classes[maxPos]+"와(과) 어울리는 색상 코디 5가지입니다.");
 
 
             //인식한 결과가 반팔일 경우
-            if(classes[maxPos].equals("반팔")){
-                for (int i = 0; i < 10; i++) {
-                    ImageView imageView = findViewById(imageViewIds[i]);
+            if(classes[maxPos].equals("CREAM")){
+                for (int i = 0; i < 5; i++) {
+                    TextView textView1 = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
                     String imageName = shorts[i];
                     String imageName2 = shorts2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+                    // 색상 코드를 정수로 변환
+                    int colors = Color.parseColor(greenColor[i]);
+
+                    // TextView의 배경색 설정
+                    textView1.setBackgroundColor(colors);
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
@@ -248,10 +255,19 @@ public class OutfitRecommend extends AppCompatActivity {
             }
 
             // Releases model resources if no longer used.
-            model.close();
+            color.close();
         } catch (IOException e) {
             // TODO Handle the exception
         }
+    }
+
+    private MappedByteBuffer loadModelFile(String modelPath) throws IOException {
+        AssetFileDescriptor fileDescriptor = getAssets().openFd(modelPath);
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
     }
 
     @Override
