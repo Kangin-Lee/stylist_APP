@@ -236,31 +236,6 @@
                     android:layout_width="220dp"
                     android:layout_height="270dp"
                     android:src="@drawable/noimage"/>
-                <ImageView
-                    android:id="@+id/outfit16"
-                    android:layout_width="220dp"
-                    android:layout_height="270dp"
-                    android:src="@drawable/noimage"/>
-                <ImageView
-                    android:id="@+id/outfit17"
-                    android:layout_width="220dp"
-                    android:layout_height="270dp"
-                    android:src="@drawable/noimage"/>
-                <ImageView
-                    android:id="@+id/outfit18"
-                    android:layout_width="220dp"
-                    android:layout_height="270dp"
-                    android:src="@drawable/noimage"/>
-                <ImageView
-                    android:id="@+id/outfit19"
-                    android:layout_width="220dp"
-                    android:layout_height="270dp"
-                    android:src="@drawable/noimage"/>
-                <ImageView
-                    android:id="@+id/outfit20"
-                    android:layout_width="220dp"
-                    android:layout_height="270dp"
-                    android:src="@drawable/noimage"/>
             </LinearLayout>
 
         </HorizontalScrollView>

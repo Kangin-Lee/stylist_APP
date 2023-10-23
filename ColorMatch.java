@@ -119,29 +119,31 @@ public class ColorMatch extends AppCompatActivity {
                 }
             }
             String[] classes = {"GREEN","NAVY","RED","BURGUNDY","BEIGE","BROWN","BLACK","BLUE","SKYBLUE","YELLOW","ORANGE","KAHKI","CREAM","PURPLE","PINK","WHITE","GRAY"};
-            String[] shorts={"short1","short2","short3","short4","short5","short6","short7","short8","short9","short10"};
-            String[] shorts2={"short11","short12","short13","short14","short15","short16","short17","short18","short19","short20"};
-            String[] shirt={"shirt1","shirt2","shirt3","shirt4","shirt5","shirt6","shirt7","shirt8","shirt9","shirt10"};
-            String[] shirt2={"shirt11","shirt12","shirt13","shirt14","shirt15","shirt16","shirt17","shirt18","shirt19","shirt20"};
-            String[] man={"man1","man2","man3","man4","man5","man6","man7","man8","man9","man10"};
-            String[] man2={"man11","man12","man13","man14","man15","man16","man17","man18","man19","man20"};
-            String[] knit={"knit1","knit2","knit3","knit4","knit5","knit6","knit7","knit8","knit9","knit10"};
-            String[] knit2={"knit11","knit12","knit13","knit14","knit15","knit16","knit17","knit18","knit19","knit20"};
-            String[] hoodie={"hoodie1","hoodie2","hoodie3","hoodie4","hoodie5","hoodie6","hoodie7","hoodie8","hoodie9","hoodie10"};
-            String[] hoodie2={"hoodie11","hoodie12","hoodie13","hoodie14","hoodie15","hoodie16","hoodie17","hoodie18","hoodie19","hoodie20"};
-            String[] cardigan={"cardigan1","cardigan2","cardigan3","cardigan4","cardigan5","cardigan6","cardigan7","cardigan8","cardigan9","cardigan10"};
-            String[] cardigan2={"cardigan11","cardigan12","cardigan13","cardigan14","cardigan15","cardigan16","cardigan17","cardigan18","cardigan19","cardigan20"};
-            String[] coat={"coat1","coat2","coat3","coat4","coat5","coat6","coat7","coat8","coat9","coat10"};
-            String[] coat2={"coat11","coat12","coat13","coat14","coat15","coat16","coat17","coat18","coat19","coat20"};
-            String[] padding={"padding1","padding2","padding3","padding4","padding5","padding6","padding7","padding8","padding9","padding10"};
-            String[] padding2={"padding1","padding12","padding13","padding14","padding15","padding16","padding17","padding18","padding19","padding20"};
+            String[] green={"green1","green2","green3","green4","green5"};
+            String[] navy={"navy1","navy2","navy3","navy4","navy5"};
+            String[] gray={"gray1","gray2","gray3","gray4","gray5"};
+            String[] red={"red1","red2","red3","red4","red5"};
+            String[] burgundy={"burgundy1","burgundy2","burgundy3","burgundy4","burgundy5"};
+            String[] begie={"begie1","begie2","begie3","begie4","begie5"};
+            String[] brown={"brown1","brown2","brown3","brown4","brown5"};
+            String[] blue={"blue1","blue2","blue3","blue4","blue5"};
+            String[] skyblue={"skyblue1","skyblue2","skyblue3","skyblue4","skyblue5"};
+            String[] yellow={"yellow1","yellow2","yellow3","yellow4","yellow5"};
+            String[] orange={"orange1","orange2","orange3","orange4","orange5"};
+            String[] kahki={"kahki1","kahki2","kahki3","kahki4","kahki5"};
+            String[] cream={"cream1","cream2","cream3","cream4","cream5"};
+            String[] purple={"purple1","purple2","purple3","purple4","purple5"};
+            String[] black={"black1","black2","black3","black4","black5"};
+            String[] pink={"pink1","pink2","pink3","pink4","pink5"};
+            String[] white={"white1","white2","white3","white4","white5"};
+
+
 
             String[] greenColor = {"#00FF00", "#008000", "#7FFF00", "#008080", "#00FA9A"};
 
             int[] imageViewIds = {R.id.color1, R.id.color2, R.id.color3, R.id.color4, R.id.color5 };
 
-            int[] imageViewIds2 = { R.id.outfit11, R.id.outfit12,R.id.outfit13, R.id.outfit14,R.id.outfit15,
-                    R.id.outfit16,R.id.outfit17,R.id.outfit18, R.id.outfit19, R.id.outfit20 };
+            int[] imageViewIds2 = { R.id.outfit11, R.id.outfit12,R.id.outfit13, R.id.outfit14,R.id.outfit15};
 
 
             //인식결과와 퍼센트 출력
@@ -153,102 +155,178 @@ public class ColorMatch extends AppCompatActivity {
 
 
             //인식한 결과가 반팔일 경우
-            if(classes[maxPos].equals("CREAM")){
+            if(classes[maxPos].equals("GREEN")){
                 for (int i = 0; i < 5; i++) {
                     TextView textView1 = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = shorts[i];
-                    String imageName2 = shorts2[i];
+//                    String imageName = shorts[i];
+                    String imageName2 = green[i];
                     // 색상 코드를 정수로 변환
                     int colors = Color.parseColor(greenColor[i]);
 
                     // TextView의 배경색 설정
-                    textView1.setBackgroundColor(colors);
+//                    textView1.setBackgroundColor(colors);
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            } else if (classes[maxPos].equals("셔츠")) {
-                for (int i = 0; i < 10; i++) {
+            } else if (classes[maxPos].equals("NAVY")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = shirt[i];
-                    String imageName2 = shirt2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = navy[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("맨투맨 or 롱슬리브")){
-                for (int i = 0; i < 10; i++) {
+            }else if (classes[maxPos].equals("GRAY")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = man[i];
-                    String imageName2 = man2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = gray[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("니트")){
-                for (int i = 0; i < 10; i++) {
+            }else if (classes[maxPos].equals("RED")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = knit[i];
-                    String imageName2 = knit2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = red[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("후드티")){
-                for (int i = 0; i < 10; i++) {
+            }else if (classes[maxPos].equals("BURGUNDY")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = hoodie[i];
-                    String imageName2 = hoodie2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = burgundy[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("카디건")){
-                for (int i = 0; i < 10; i++) {
+            } else if (classes[maxPos].equals("BEIGE")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = cardigan[i];
-                    String imageName2 = cardigan2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = begie[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("코트")){
-                for (int i = 0; i < 10; i++) {
+            } else if (classes[maxPos].equals("BROWN")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = coat[i];
-                    String imageName2 = coat2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = brown[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
-            }else if(classes[maxPos].equals("패딩")){
-                for (int i = 0; i < 10; i++) {
+            }else if (classes[maxPos].equals("BLACK")) {
+                for (int i = 0; i < 5; i++) {
                     ImageView imageView = findViewById(imageViewIds[i]);
                     ImageView imageView1 = findViewById(imageViewIds2[i]);
 
-                    String imageName = padding[i];
-                    String imageName2 = padding2[i];
-                    int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    imageView.setImageResource(resID);
+//                    String imageName = shirt[i];
+                    String imageName2 = black[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("BLUE")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = blue[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("SKYBLUE")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = skyblue[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("YELLOW")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = yellow[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("ORANGE")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = orange[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("KAHKI")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = kahki[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("CREAM")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = cream[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("PURPLE")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = purple[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("PINK")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = pink[i];
+                    int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
+                    imageView1.setImageResource(resID2);
+                }
+            }else if (classes[maxPos].equals("WHITE")) {
+                for (int i = 0; i < 5; i++) {
+                    ImageView imageView = findViewById(imageViewIds[i]);
+                    ImageView imageView1 = findViewById(imageViewIds2[i]);
+
+//                    String imageName = shirt[i];
+                    String imageName2 = white[i];
                     int resID2 = getResources().getIdentifier(imageName2, "drawable",getPackageName());
                     imageView1.setImageResource(resID2);
                 }
